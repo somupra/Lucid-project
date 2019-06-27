@@ -8,7 +8,6 @@ Project for Summer of Code IITK, 2019
 - Tanu Modi
 - Muskan Garg
 - Shivam Shukla
-- Utkarsh Verma
 
 ## Requirements:
 1. Django
