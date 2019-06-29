@@ -21,6 +21,6 @@ from User.views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('login/', auth_views.LoginView.as_view(template_name = 'User/login.html') , name='login'),
-    path('passed/', passed_login, name = 'passed'),
+    path('dashboard/',include('municipality_dashboard.urls') , name = 'dashboard'),
     path('', include('municipality_dashboard.urls')),
 ]
