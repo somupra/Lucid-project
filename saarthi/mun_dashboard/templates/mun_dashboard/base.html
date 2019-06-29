@@ -37,23 +37,25 @@
                         About
                     </a>
                 </li>
-                <li class="active">
-                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                        <i class="fas fa-home"></i>
-                        Complaints
-                    </a>
-                    <ul class="collapse list-unstyled" id="homeSubmenu">
-                        <li>
-                            <a href="#">New Complaints</a>
-                        </li>
-                        <li>
-                            <a href="#">Complaints in progress</a>
-                        </li>
-                        <li>
-                            <a href="#">Solved Complaints</a>
-                        </li>
-                    </ul>
-                </li>
+                {% if user.is_authenticated %}
+                    <li class="active">
+                        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                            <i class="fas fa-home"></i>
+                            Complaints
+                        </a>
+                        <ul class="collapse list-unstyled" id="homeSubmenu">
+                            <li>
+                                <a href="#">New Complaints</a>
+                            </li>
+                            <li>
+                                <a href="#">Complaints in progress</a>
+                            </li>
+                            <li>
+                                <a href="#">Solved Complaints</a>
+                            </li>
+                        </ul>
+                    </li>
+                {% endif %}
         </nav>
 
         <!-- Page Content  -->
@@ -67,13 +69,15 @@
 
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="nav navbar-nav ml-auto">
+                        {% if user.is_authenticated %}
                             <li class="nav-item active">
-                                <a class="nav-link" href="#">Home</a>
+                                <a class="nav-link" href="{% url 'dashboard' %}">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Logout</a>
+                                <a class="nav-link" href="{% url 'logout' %}">Logout</a>
                             </li>
                         </ul>
+                        {% endif %}
                     </div>
                 </div>
             </nav>
