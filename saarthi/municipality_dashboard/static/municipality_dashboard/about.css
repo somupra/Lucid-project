@@ -1,0 +1,20 @@
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+body {
+    font-family: 'Poppins', sans-serif;
+    background-image:url("r5.jpg");
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: 2000px 2000px;
+    background-color: #cccccc;
+    height:100%; /* You must set a specified height */
+    image:url("r1.jpg");    
+}
+
+p {
+    font-family: 'Poppins', sa ns-serif;
+    font-size: 1.1em;
+    font-weight: 300;
+    line-height: 1.7em;
+    color: #999;
+}
+

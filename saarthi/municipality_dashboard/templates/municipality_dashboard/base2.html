@@ -1,0 +1,433 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Saarthi</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type= "text/css" href="{% static 'municipality_dashboard/about.css' %}">
+  <link href='http://fonts.googleapis.com/css?family=Lobster+Two' rel='stylesheet'>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+  body {
+      font: 400 15px Lato, sans-serif;
+      line-height: 1.8;
+      color: #818181;
+  }
+  body, html {
+    height: 100%;
+    margin: 10;
+    font: 400 15px/1.8 "Lato", sans-serif;
+    color: #777;
+  }
+
+  .bgimg-1, .bgimg-2, .bgimg-3 {
+    position: relative;
+    opacity: 0.80;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+  }
+
+  .bgimg-1 {
+    background-image: url("img_parallax1.jpg");
+    min-height: 100%;
+  }
+
+  .bgimg-2 {
+    background-image: url("img_parallax.jpg");
+    min-height: 200px;
+  }
+
+  .bgimg-3 {
+    background-image: url("img_parallax2.jpg");
+    min-height: 400px;
+  }
+
+
+  .captiona {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+  }
+
+  .captiona span.bordera {
+    color: #fff;
+    font: 600 83px/1.3 'Lobster Two', Helvetica, sans-serif;
+    text-shadow: 1px 1px 0px #ededed, 4px 4px 0px rgba(0,0,0,0.15);
+    letter-spacing: 10px;
+  }
+  h2 {
+      font-size: 24px;
+      text-transform: uppercase;
+      color: #303030;
+      font-weight: 600;
+      margin-bottom: 30px;
+  }
+  h4 {
+      font-size: 19px;
+      line-height: 1.375em;
+      color: #303030;
+      font-weight: 400;
+      margin-bottom: 30px;
+  }
+
+  .avatar {
+      display: block;
+      border-radius: 400px;
+      box-sizing: border-box;
+      background-color: #DDD;
+      border: 5px solid #cfd8dc;
+  }
+
+  img {
+      height: 400px;
+      width: 400px;
+  }
+
+  .blacken{
+    color: black;
+  }
+  .jumbotron {
+      background-color: #f4511e;
+      color: #fff;
+      padding: 100px 25px;
+      font-family: Montserrat, sans-serif;
+  }
+  .container-fluid {
+      padding: 60px 50px;
+  }
+  .bg-grey {
+      background-color: #f6f6f6;
+  }
+  .logo-small {
+      color: #f4511e;
+      font-size: 50px;
+  }
+  .logo {
+      color: #f4511e;
+      font-size: 200px;
+  }
+  .thumbnail {
+      padding: 0 0 15px 0;
+      border: none;
+      border-radius: 0;
+  }
+  .thumbnail img {
+      width: 100%;
+      height: 100%;
+      margin-bottom: 10px;
+  }
+  .carousel-control.right, .carousel-control.left {
+      background-image: none;
+      color: #f4511e;
+  }
+  .carousel-indicators li {
+      border-color: #f4511e;
+  }
+  .carousel-indicators li.active {
+      background-color: #f4511e;
+  }
+  .item h4 {
+      font-size: 19px;
+      line-height: 1.375em;
+      font-weight: 400;
+      font-style: italic;
+      margin: 70px 0;
+  }
+  .item span {
+      font-style: normal;
+  }
+  .panel {
+      border: 1px solid #f4511e;
+      border-radius:0 !important;
+      transition: box-shadow 0.5s;
+  }
+  .panel:hover {
+      box-shadow: 5px 0px 40px rgba(0,0,0, .2);
+  }
+  .panel-footer .btn:hover {
+      border: 1px solid #f4511e;
+      background-color: #fff !important;
+      color: #f4511e;
+  }
+  .panel-heading {
+      color: #fff !important;
+      background-color: #f4511e !important;
+      padding: 25px;
+      border-bottom: 1px solid transparent;
+      border-top-left-radius: 0px;
+      border-top-right-radius: 0px;
+      border-bottom-left-radius: 0px;
+      border-bottom-right-radius: 0px;
+  }
+  .panel-footer {
+      background-color: white !important;
+  }
+  .panel-footer h3 {
+      font-size: 32px;
+  }
+  .panel-footer h4 {
+      color: #aaa;
+      font-size: 14px;
+  }
+  .panel-footer .btn {
+      margin: 15px 0;
+      background-color: #f4511e;
+      color: #fff;
+  }
+  .navbar {
+      margin-bottom: 0;
+      background-color: black;
+      z-index: 9999;
+      border: 0;
+      font-size: 12px !important;
+      line-height: 1.42857143 !important;
+      letter-spacing: 4px;
+      border-radius: 0;
+      font-family: Montserrat, sans-serif;
+  }
+  .navbar li a, .navbar .navbar-brand {
+      color: #fff !important;
+  }
+  .navbar-nav li a:hover, .navbar-nav li.active a {
+      color: #f4511e !important;
+      background-color: #fff !important;
+  }
+  .navbar-default .navbar-toggle {
+      border-color: transparent;
+      color: #fff !important;
+  }
+  footer .glyphicon {
+      font-size: 20px;
+      margin-bottom: 20px;
+      color: #f4511e;
+  }
+  .slideanim {visibility:hidden;}
+  .slide {
+      animation-name: slide;
+      -webkit-animation-name: slide;
+      animation-duration: 1s;
+      -webkit-animation-duration: 1s;
+      visibility: visible;
+  }
+  @keyframes slide {
+    0% {
+      opacity: 0;
+      transform: translateY(70%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0%);
+    }
+  }
+  @-webkit-keyframes slide {
+    0% {
+      opacity: 0;
+      -webkit-transform: translateY(70%);
+    }
+    100% {
+      opacity: 1;
+      -webkit-transform: translateY(0%);
+    }
+  }
+  @media screen and (max-width: 768px) {
+    .col-sm-4 {
+      text-align: center;
+      margin: 25px 0;
+    }
+    .btn-lg {
+        width: 100%;
+        margin-bottom: 35px;
+    }
+  }
+  @media screen and (max-width: 480px) {
+    .logo {
+        font-size: 150px;
+    }
+  }
+  </style>
+</head>
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+
+  <div class="bgimg-1">
+    <div class="captiona">
+      <span class="bordera" ><div class="blacken slideanim">Welcome!<br>Know Us More!</div></span>
+    </div>
+  </div>
+
+
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#myPage">Saarthi</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#intro">INTRODUCTION</a></li>
+        <li><a href="#ito">ABOUT</a></li>
+        <li><a href="#theapp">THE APP</a></li>
+        <li><a href="#contact">CONTACT</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="bgimg-2">
+  <div class="caption">
+<div id="intro" class="container-fluid">
+  <div class="row">
+    <div class="col-sm-8">
+      <div class="blacken ">
+      <h2>
+        <div class="blacken slideanim">Introduction</div></h2><br>
+      <h4>
+        <font color=black size=5px><div class="slideanim">Saarthi is an app to connect the citizen with Ministry of Road Transport and Highways</div></font></h4><br>
+      <p>
+        <font color=black size=5px><div class="slideanim"> Innovation and simplicity makes us happy: our goal is to remove any technical or communication barriers which prevents the development .</div></font></p>
+      <br><button class="btn btn-default btn-lg slideanim"><a href="#contact">Get in Touch</a></button>
+    </div>
+    </div>
+    <div class="col-sm-4">
+      <img class="avatar" src="{% static "municipality_dashboard/r4.jpg" %}" >
+    </div>
+  </div>
+</div>
+</div>
+</div>
+<div id="ito" class="container-fluid text-center bg-grey slideanim">
+  <h2>ABOUT</h2><br>
+  <h4>How It Works</h4>
+  <div class="row text-center slideanim">
+    <p>Saarthi is a solution based on GIS Based Images of the potholes/Landslides/Accidents/Other Hazards which are captured by the citizens.
+     It connects the citizen by providing a space to report such problems by posting images of exact location.
+     Government has the access to all the information provided and hence can resolve it as soon as possible .
+     In return citizens do get reward points(which provides some privileges on toll-taxes etc) when a particular reported problem has been verified to be correct by the government.</p>
+    </div><br>
+</div>
+<div id="theapp" class="container-fluid slideanim">
+  <h2>ALL ABOUT APP</h2>
+  <div id="myCarousel" class="carousel slide text-center" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner slideanim" role="listbox">
+      <div class="item active">
+        <h4>THE CITIZEN END </h4>
+      <span>
+      <div class="col-sm-6">
+        <img src="{% static "municipality_dashboard/r2.jpg" %}"></div>
+        <div class="col-sm-6"><img src="{% static "municipality_dashboard/roadway.jpg" %}"></center>
+      </div>
+    </span>
+  </div>
+
+      <div class="item">
+        <h4>THE MUNICIPAL END </h4>
+        <span>
+        <div class="col-sm-6">
+          <img src="{% static "municipality_dashboard/highway.jpg" %}"></div>
+          <div class="col-sm-6"><img src="{% static "municipality_dashboard/r3.jpg" %}"></center>
+        </div>
+        </div>
+      </span>
+      </div>
+          <!-- Left and right controls -->
+         <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+</div>
+
+
+
+<!-- Container (Contact Section) -->
+<div id="contact" class="container-fluid bg-grey slideanim">
+  <h2 class="text-center">Contact US </h2><h5><br><center>  It's a pleasure to help you</h5>
+  <!--div class="row"-->
+<center>
+    <i class="fa fa-phone" aria-hidden="true"></i>   Phone:  0000 
+<br>
+    <i class="fa fa-envelope" aria-hidden="true"></i>      Mail:  <a href="mailto:saarthi@gmail.com" class="lime-text">saarthi@gmail.com</a> 
+    <br><i class="fa fa-map-marker" aria-hidden="true"></i>   Address:  RM Builing, IIT Kanpur, India<br>
+</center>
+    </center>
+    </div>
+
+<!-- Add Google Maps -->
+<div id="googleMap" style="height:600px;width:100%;">
+<iframe width="100%" height="600"frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJo8u6KgI3nDkRf0jB5XjA1oM&key=AIzaSyDxEEmSYwfpY9gWjhNBO-b-Q-5ZdW3yi6o" allowfullscreen></iframe>
+</div>
+
+
+<footer class="container-fluid text-center">
+  <a href="#myPage" title="To Top">
+    <span class="glyphicon glyphicon-chevron-up"></span>
+  </a>
+
+</footer>
+
+<script>
+$(document).ready(function(){
+  // Add smooth scrolling to all links in navbar + footer link
+  $(".navbar a, footer a[href='#myPage']").on('click', function(event) {
+    // Make sure this.hash has a value before overriding default behavior
+    if (this.hash !== "") {
+      // Prevent default anchor click behavior
+      event.preventDefault();
+
+      // Store hash
+      var hash = this.hash;
+
+      // Using jQuery's animate() method to add smooth page scroll
+      // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 900, function(){
+
+        // Add hash (#) to URL when done scrolling (default click behavior)
+        window.location.hash = hash;
+      });
+    } // End if
+  });
+
+  $(window).scroll(function() {
+    $(".slideanim").each(function(){
+      var pos = $(this).offset().top;
+
+      var winTop = $(window).scrollTop();
+        if (pos < winTop + 600) {
+          $(this).addClass("slide");
+        }
+    });
+  });
+})
+</script>
+
+</body>
+</html>
