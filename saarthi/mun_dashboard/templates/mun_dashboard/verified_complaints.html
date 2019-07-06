@@ -14,7 +14,7 @@
                     <p><strong>Date filed : </strong>{{ complaint.date_filed }}</p>
                     <p><strong>Category : </strong>{{ complaint.tag }}</p>
                     <p><strong>Description : </strong>{{ complaint.description }}</p>
-                <a class="btn btn-secondary" href="{% url 'verify' complaint.complaint_id %}">Approve, Take Action</a>
+                <a class="btn btn-secondary" href="{% url 'mark-solved' complaint.complaint_id %}">Mark Solved</a>
             </div>
         </div>
         <br/>

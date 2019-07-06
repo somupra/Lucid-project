@@ -10,6 +10,7 @@ class Complaint(models.Model):
 		('Potholes', 'Potholes'),
 		('Landslides', 'Landslides'),
 	]
+
     location = models.TextField()
     is_verified = models.BooleanField(default = False)
     is_settled = models.BooleanField(default = False)
@@ -21,3 +22,7 @@ class Complaint(models.Model):
     description = models.TextField()
     complaint_status = models.CharField(max_length = 10)
 
+class Tag(models.Model):
+    complaint = models.ManyToManyField(Complaint, related_name = 'tags')
+    title = models.CharField(max_length = 30)
+    reward = models.IntegerField()
