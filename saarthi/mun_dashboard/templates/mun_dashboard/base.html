@@ -45,13 +45,13 @@
                         </a>
                         <ul class="collapse list-unstyled" id="homeSubmenu">
                             <li>
-                                <a href="#">New Complaints</a>
+                                <a href="{% url 'dashboard'%}">New Complaints</a>
                             </li>
                             <li>
-                                <a href="#">Complaints in progress</a>
+                                <a href="{% url 'verified-complaints' %}">Complaints in progress</a>
                             </li>
                             <li>
-                                <a href="#">Solved Complaints</a>
+                                <a href="{% url 'solved-complaints' %}">Solved Complaints</a>
                             </li>
                         </ul>
                     </li>
