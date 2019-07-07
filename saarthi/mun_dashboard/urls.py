@@ -4,7 +4,7 @@ from .views import *
 urlpatterns = [
     path('', dashboard, name = 'dashboard'),
     path('verify/<uuid:pk>', approve_success, name = 'verify'),
-    path('mark_solved/<uuid:pk>', marksolved, name = 'mark-solved'),
-    path('verified-complaints/', verifiedcomplaints, name = 'verified-complaints'),
-    path('solved-complaints/', solvedcomplaints, name = 'solved-complaints'),
+    path('mark_solved/<uuid:pk>', mark_solved, name = 'solved-success'),
+    path('verified-complaints/', verified_complaints, name = 'verified-complaints'),
+    path('solved-complaints/', solved_complaints, name = 'solved-complaints'),
 ]
