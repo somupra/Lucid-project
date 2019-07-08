@@ -11,7 +11,8 @@
                 <p><strong>ID : </strong>{{ complaint.complaint_id }}</p>
                 <p><strong>Filer Name : </strong>{{ complaint.filer }}</p>
                 <p><strong>Date filed : </strong>{{ complaint.date_filed }}</p>
-                <p><strong>Category : </strong>{{ complaint.tag }}</p>
+                <p><strong>Category : </strong>{{ complaint.type_of_complaint }}</p>
+                <p><strong>Tags : {% for tag in complaint.tag.all %}</strong>{{ tag.title }}, {% endfor %}</p>
                 <p><strong>Description : </strong>{{ complaint.description }}</p>
                 <div>
                     <p>Credited Reward: {{reward}}</p>

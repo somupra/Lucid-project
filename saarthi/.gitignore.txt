@@ -1,0 +1,5 @@
+# ignore all compiled files
+*.pyc
+
+# ignore the database file, A new one needs to be created always
+db.sqlite3

@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User
+from users.models import User
 import uuid
 # Create your models here.
 
@@ -25,7 +25,9 @@ class Complaint(models.Model):
     is_settled = models.BooleanField(default = False)
     
     complaint_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+
     filer = models.ForeignKey(User, on_delete = models.CASCADE)
+    
     date_filed = models.DateTimeField(auto_now_add = True, null = True)
     ref_image = models.ImageField(upload_to= 'Complaints', default = None)
     
