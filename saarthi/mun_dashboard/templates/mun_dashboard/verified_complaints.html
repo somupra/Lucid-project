@@ -15,7 +15,7 @@
                     <p><strong>Category : </strong>{{ complaint.type_of_complaint }}</p>
                     <p><strong>Tags : {% for tag in complaint.tag.all %}</strong>{{ tag.title }}, {% endfor %}</p>
                     <p><strong>Description : </strong>{{ complaint.description }}</p>
-                <a class="btn btn-secondary" href="{% url 'verify' complaint.complaint_id %}">Approve, Take Action</a>
+                <a class="btn btn-secondary" href="{% url 'solved-success' complaint.complaint_id %}">Mark Solved</a>
             </div>
         </div>
         <br/>
