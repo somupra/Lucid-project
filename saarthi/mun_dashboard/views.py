@@ -44,6 +44,9 @@ def solved_complaints(request):
     complaints = Complaint.objects.filter(is_settled= True).order_by('-date_filed')
     return render(request, 'mun_dashboard/solved_complaints.html', {'complaints': complaints})
 
+def welcome_page(request):
+    return render(request, 'mun_dashboard/welcome.html')
+
 
 
 
