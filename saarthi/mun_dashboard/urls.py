@@ -7,4 +7,5 @@ urlpatterns = [
     path('mark_solved/<uuid:pk>', mark_solved, name = 'solved-success'),
     path('verified-complaints/', verified_complaints, name = 'verified-complaints'),
     path('solved-complaints/', solved_complaints, name = 'solved-complaints'),
+    path('saarthi/', welcome_page)
 ]
