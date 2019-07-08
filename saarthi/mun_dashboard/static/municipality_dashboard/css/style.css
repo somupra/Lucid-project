@@ -261,7 +261,7 @@ div#preloader {
 }
 
 .main-menu ul.navbar-nav li a {
-  background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+  background: rgba(0,0,0,0); none repeat scroll 0 0;
   color: #fff;
   font-size: 15px;
   font-weight: 500;
@@ -364,7 +364,7 @@ div#preloader {
 /*--------------------------------*/
 
 .header-area.stick {
-  background-color: rgba(0, 0, 0, 1);
+  background-color: #008080;
   height: 70px;
   position: fixed;
   top: 0;
