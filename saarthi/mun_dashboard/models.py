@@ -13,12 +13,6 @@ class Tag(models.Model):
 
 class Complaint(models.Model):
 
-    complaint_types = [
-		('Accident', 'Accident'),
-		('Potholes', 'Potholes'),
-		('Landslides', 'Landslides'),
-	]
-
     location = models.URLField()
     
     is_verified = models.BooleanField(default = False)
