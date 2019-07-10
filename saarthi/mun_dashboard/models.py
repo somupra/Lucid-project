@@ -29,7 +29,7 @@ class Complaint(models.Model):
     tag = models.ManyToManyField(Tag, related_name = 'complaints')
     
     description = models.TextField()
-    complaint_status = models.CharField(max_length = 10)
+    complaint_status = models.CharField(max_length = 10, default = 'pending')
 
 
 

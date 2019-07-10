@@ -4,12 +4,12 @@ from users.models import *
 
 class TagSerializer(serializers.ModelSerializer):
     class Meta:
-        Model = Tag
-        fields = ('title',)
+        model = Tag
+        fields = ('pk','title')
 
 
 class ComplaintSerializer(serializers.ModelSerializer):
-    tag = serializers.StringRelatedField(many = True)
+    
     class Meta:
         model = Complaint
         fields = (
@@ -25,6 +25,7 @@ class ComplaintSerializer(serializers.ModelSerializer):
             'description',
             'complaint_status'
         )
+
 
 
 class NotificationSerializer(serializers.ModelSerializer):

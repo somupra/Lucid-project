@@ -3,7 +3,9 @@ from .views import *
 
 urlpatterns = [
     path('complaints/pending', ComPendingView.as_view(), name='pending'),
+    path('user/notifications', NotificationView.as_view(), name='notifications'),
     path('complaints/verified', ComVerifiedView.as_view(), name='verified'),
-    # path('complaints/create', ComCreateView.as_view(), name='create'),
-
+    path('complaints/settled', ComSettledView.as_view(), name='settled'),
+    path('complaints/create', ComCreateView.as_view(), name='create'),
+    path('tags', TagView.as_view(), name='create'),
 ]
