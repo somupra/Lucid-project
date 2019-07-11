@@ -1,14 +1,33 @@
 from rest_framework import serializers
 from mun_dashboard.models import *
 from users.models import *
+# from drf_extra_fields.fields import Base64ImageField
+from .functions import Base64ImageField
+
+class TrialSerializer(serializers.ModelSerializer):
+    
+    image = Base64ImageField(
+        max_length=None, use_url=True,
+    )
+    class Meta:
+        model = TrialModel
+        fields = ('image', 'name')
+
 
 class TagSerializer(serializers.ModelSerializer):
+
     class Meta:
         model = Tag
         fields = ('pk','title')
 
 
 class ComplaintSerializer(serializers.ModelSerializer):
+
+    ref_image= Base64ImageField(
+        max_length=None, use_url=True,
+    )
+
+    tag = serializers.StringRelatedField(many = True)
     
     class Meta:
         model = Complaint

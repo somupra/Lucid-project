@@ -35,7 +35,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'api',
     'django.contrib.sites',
-
+    'drf_extra_fields',
     'allauth',
     'allauth.account',
     'rest_auth.registration',
@@ -160,6 +160,8 @@ ACCOUNT_LOGOUT_ON_GET = False
 ACCOUNT_AUTHENTICATION_METHOD = 'username'
 ACCOUNT_EMAIL_VERIFICATION = 'optional'
 OLD_PASSWORD_FIELD_ENABLED = True
+
+# DATA_UPLOAD_MAX_MEMORY_SIZE = 5242880
 
 
 

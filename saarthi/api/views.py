@@ -6,7 +6,7 @@ from rest_framework import authentication
 from mun_dashboard.models import *
 from .serializers import *
 
-class ComCreateView(mixins.CreateModelMixin, generics.GenericAPIView):
+class ComCreateView(generics.CreateAPIView):
     
     permission_classes = (IsAuthenticated,)
     # authentication_classes = (authentication.TokenAuthentication,)
@@ -16,6 +16,13 @@ class ComCreateView(mixins.CreateModelMixin, generics.GenericAPIView):
         serializer.save(filer=self.request.user)
 
 
+class TrialCreateView(generics.CreateAPIView):
+    
+    permission_classes = (IsAuthenticated,)
+    # authentication_classes = (authentication.TokenAuthentication,)
+    serializer_class = TrialSerializer
+
+
 class ComPendingView(generics.ListAPIView):
     
     permission_classes = (IsAuthenticated,)
@@ -23,7 +30,7 @@ class ComPendingView(generics.ListAPIView):
     serializer_class = ComplaintSerializer
 
     def get_queryset(self, *args, **kwargs):
-     return Complaint.objects.all().filter(filer=self.request.user, is_verified = False, is_settled = False)
+        return Complaint.objects.all().filter(filer=self.request.user, is_verified = False, is_settled = False)
 
 
 class ComVerifiedView(generics.ListAPIView):
@@ -33,7 +40,7 @@ class ComVerifiedView(generics.ListAPIView):
     serializer_class = ComplaintSerializer
 
     def get_queryset(self, *args, **kwargs):
-     return Complaint.objects.all().filter(filer = self.request.user, is_verified = True, is_settled = False)
+        return Complaint.objects.all().filter(filer = self.request.user, is_verified = True, is_settled = False)
 
 class ComSettledView(generics.ListAPIView):
     
@@ -42,7 +49,7 @@ class ComSettledView(generics.ListAPIView):
     serializer_class = ComplaintSerializer
 
     def get_queryset(self, *args, **kwargs):
-     return Complaint.objects.all().filter(filer = self.request.user, is_verified = True, is_settled = True)
+        return Complaint.objects.all().filter(filer = self.request.user, is_verified = True, is_settled = True)
 
 
 class NotificationView(generics.ListAPIView):
@@ -52,7 +59,7 @@ class NotificationView(generics.ListAPIView):
     serializer_class = NotificationSerializer
 
     def get_queryset(self, *args, **kwargs):
-     return Notification.objects.all().filter(user = self.request.user)
+        return Notification.objects.all().filter(user = self.request.user)
 
 class TagView(generics.ListAPIView):
     
@@ -61,5 +68,5 @@ class TagView(generics.ListAPIView):
     serializer_class = TagSerializer
 
     def get_queryset(self, *args, **kwargs):
-     return Tag.objects.all()
+        return Tag.objects.all()
 

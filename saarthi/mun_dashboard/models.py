@@ -3,6 +3,10 @@ from users.models import User
 import uuid
 # Create your models here.
 
+class TrialModel(models.Model):
+    image = models.ImageField(upload_to = 'Compalints', default = None)
+    name = models.CharField(max_length = 11)
+
 class Tag(models.Model):
     title = models.CharField(max_length = 30)
     reward = models.IntegerField()
