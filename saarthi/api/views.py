@@ -15,7 +15,6 @@ class ComCreateView(generics.CreateAPIView):
     def perform_create(self, serializer):
         serializer.save(filer=self.request.user)
 
-
 class TrialCreateView(generics.CreateAPIView):
     
     permission_classes = (IsAuthenticated,)
@@ -40,12 +39,12 @@ class ComVerifiedView(generics.ListAPIView):
     serializer_class = ComplaintSerializer
 
     def get_queryset(self, *args, **kwargs):
-        return Complaint.objects.all().filter(filer = self.request.user, is_verified = True, is_settled = False)
+        return Complaint.objects.all().filter(filer = self.request.user, is_verified = False, is_settled = False)
 
 class ComSettledView(generics.ListAPIView):
     
     permission_classes = (IsAuthenticated,)
-    # authentication_classes = (authentication.TokenAuthentication, )
+    authentication_classes = (authentication.TokenAuthentication, )
     serializer_class = ComplaintSerializer
 
     def get_queryset(self, *args, **kwargs):
@@ -60,13 +59,4 @@ class NotificationView(generics.ListAPIView):
 
     def get_queryset(self, *args, **kwargs):
         return Notification.objects.all().filter(user = self.request.user)
-
-class TagView(generics.ListAPIView):
-    
-    permission_classes = (IsAuthenticated,)
-    # authentication_classes = (authentication.TokenAuthentication, )
-    serializer_class = TagSerializer
-
-    def get_queryset(self, *args, **kwargs):
-        return Tag.objects.all()
 

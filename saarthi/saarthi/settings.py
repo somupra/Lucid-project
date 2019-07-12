@@ -75,8 +75,8 @@ TEMPLATES = [
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.TokenAuthentication',
-        'rest_framework.authentication.SessionAuthentication'  # Token based authentication
+        'rest_framework.authentication.TokenAuthentication',    # Token based authentication
+        'rest_framework.authentication.SessionAuthentication'  
     ],
 }
 
@@ -161,7 +161,7 @@ ACCOUNT_AUTHENTICATION_METHOD = 'username'
 ACCOUNT_EMAIL_VERIFICATION = 'optional'
 OLD_PASSWORD_FIELD_ENABLED = True
 
-# DATA_UPLOAD_MAX_MEMORY_SIZE = 5242880
+DATA_UPLOAD_MAX_MEMORY_SIZE = 5242880
 
 
 

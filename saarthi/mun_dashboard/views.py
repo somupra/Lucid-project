@@ -9,7 +9,25 @@ from .decorators import officials_only
 @officials_only
 def dashboard(request):
     complaints = Complaint.objects.filter(is_verified = False).order_by('-date_filed')
-    return render(request, 'mun_dashboard/dashboard.html', {'complaints': complaints})
+    return render(request, 'mun_dashboard/dashboard.html', {'complaints': complaints})\
+
+@login_required
+@officials_only
+def decline(request, pk):
+    complaint = get_object_or_404(Complaint, pk = pk)
+    complaint.delete()
+    messages.success(request, f'Complaint deleted successfully!')
+    return redirect('dashboard')
+
+@login_required
+@officials_only
+def mark_spam(request, pk):
+    complaint = get_object_or_404(Complaint, pk = pk)
+    complaint.filer.profile.spamcount += 1
+    complaint.filer.profile.save()
+    complaint.delete()
+    messages.success(request, f'Complaint marked as spam successfully!')
+    return redirect('dashboard')
 
 @login_required
 @officials_only
@@ -17,12 +35,8 @@ def approve_success(request, pk):
     complaint = get_object_or_404(Complaint, pk = pk)
     complaint.is_verified = True
     complaint.status = 'Verified'
-    current_date = complaint.date_filed 
-    complaint.date_filed = current_date
-    points = 0
-    for tag in complaint.tag.all():
-        points += tag.reward
-    complaint.filer.profile.rewards = points
+    points = 10
+    complaint.filer.profile.rewards += points
     complaint.filer.profile.save()
     complaint.save()
     messages.success(request, f'Complaint verified successfully!')
