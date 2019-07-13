@@ -14,6 +14,7 @@ SECRET_KEY = 'cnj(o8s2c63g!+z0bprd7i=ojdd9!*#z^tznnu9u3&k(7tjf+z'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+# All hosts allowed at the computer's IP
 ALLOWED_HOSTS = ['*']
 
 
@@ -28,8 +29,20 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'mun_dashboard.apps.MunDashboardConfig',
     'users.apps.UsersConfig',
-    'crispy_forms'
+    'crispy_forms',
+    'rest_framework',
+    'rest_auth',
+    'rest_framework.authtoken',
+    'api',
+    'django.contrib.sites',
+    'drf_extra_fields',
+    'allauth',
+    'allauth.account',
+    'rest_auth.registration',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.facebook',
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -59,6 +72,13 @@ TEMPLATES = [
         },
     },
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',    # Token based authentication
+        'rest_framework.authentication.SessionAuthentication'  
+    ],
+}
 
 WSGI_APPLICATION = 'saarthi.wsgi.application'
 
@@ -109,12 +129,14 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
-STATIC_URL = '/static/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
+# Custom user model
+AUTH_USER_MODEL = 'users.User'
 LOGIN_REDIRECT_URL= 'dashboard'
 LOGIN_URL = 'login'
-AUTH_USER_MODEL = 'users.User'
+
+# Static files url
+STATIC_URL = '/static/'
+
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MESSAGE_TAGS = {
@@ -124,4 +146,22 @@ MESSAGE_TAGS = {
     messages.WARNING: 'alert-warning',
     messages.ERROR: 'alert-danger',
 }
+
+# Media files
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
+# Additional rest settings
+REST_SESSION_LOGIN = True
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+SITE_ID = 1
+ACCOUNT_EMAIL_REQUIRED = False
+ACCOUNT_LOGOUT_ON_GET = False
+ACCOUNT_AUTHENTICATION_METHOD = 'username'
+ACCOUNT_EMAIL_VERIFICATION = 'optional'
+OLD_PASSWORD_FIELD_ENABLED = True
+
+DATA_UPLOAD_MAX_MEMORY_SIZE = 5242880
+
+
 

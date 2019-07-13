@@ -3,23 +3,14 @@ from users.models import User
 import uuid
 # Create your models here.
 
-class Tag(models.Model):
-    title = models.CharField(max_length = 30)
-    reward = models.IntegerField()
-
-    def __str__(self):
-        return self.title
-
+class TrialModel(models.Model):
+    image = models.ImageField(upload_to = 'Compalints', default = None)
+    name = models.CharField(max_length = 100)
+    filer = models.ForeignKey(User, on_delete = models.CASCADE)
 
 class Complaint(models.Model):
 
-    complaint_types = [
-		('Accident', 'Accident'),
-		('Potholes', 'Potholes'),
-		('Landslides', 'Landslides'),
-	]
-
-    location = models.URLField()
+    location = models.CharField(max_length = 100)
     
     is_verified = models.BooleanField(default = False)
     is_settled = models.BooleanField(default = False)
@@ -30,12 +21,15 @@ class Complaint(models.Model):
     
     date_filed = models.DateTimeField(auto_now_add = True, null = True)
     ref_image = models.ImageField(upload_to= 'Complaints', default = None)
-    
-    type_of_complaint = models.CharField(max_length = 9, choices = (('Accident','Accident'),('Disaster','Natural Disaster'),('Roads','Road Maintenance'),('Other','Other')))
-    tag = models.ManyToManyField(Tag, related_name = 'complaints')
-    
+        
     description = models.TextField()
-    complaint_status = models.CharField(max_length = 10)
+    complaint_status = models.CharField(max_length = 10, default = 'pending')
+
+    class Meta:
+        ordering = ('-date_filed',)
+
+    def __str__(self):
+        return f'{self.filer.username} complaint : {self.complaint_id}'
 
 
 

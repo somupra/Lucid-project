@@ -8,14 +8,14 @@
                 </a>
             </div>
             <div class="col-md-7">
-                <h3>Location : {{ complaint.location }}</h3>
+                <h4><a href = "{{ complaint.location }}">Location : {{ complaint.location }}</a></h4>
                     <p><strong>ID : </strong>{{ complaint.complaint_id }}</p>
                     <p><strong>Filer Name : </strong>{{ complaint.filer }}</p>
                     <p><strong>Date filed : </strong>{{ complaint.date_filed }}</p>
-                    <p><strong>Category : </strong>{{ complaint.type_of_complaint }}</p>
-                    <p><strong>Tags : {% for tag in complaint.tag.all %}</strong>{{ tag.title }}, {% endfor %}</p>
                     <p><strong>Description : </strong>{{ complaint.description }}</p>
                 <a class="btn btn-secondary" href="{% url 'verify' complaint.complaint_id %}">Approve, Take Action</a>
+                <a class="btn btn-primary" href="{% url 'decline' complaint.complaint_id %}">Decline</a>
+                <a class="btn btn-danger" href="{% url 'spam' complaint.complaint_id %}">Mark Spam</a>
             </div>
         </div>
         <br/>
