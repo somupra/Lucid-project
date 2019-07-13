@@ -25,6 +25,12 @@ class Complaint(models.Model):
     description = models.TextField()
     complaint_status = models.CharField(max_length = 10, default = 'pending')
 
+    class Meta:
+        ordering = ('-date_filed',)
+
+    def __str__(self):
+        return f'{self.filer.username} complaint : {self.complaint_id}'
+
 
 
 

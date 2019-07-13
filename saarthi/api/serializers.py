@@ -17,6 +17,8 @@ class ComplaintSerializer(serializers.ModelSerializer):
     ref_image= Base64ImageField(
         max_length=None, use_url=True,
     )
+
+    filer = serializers.StringRelatedField()
     
     class Meta:
         model = Complaint
@@ -32,8 +34,8 @@ class ComplaintSerializer(serializers.ModelSerializer):
             'complaint_status'
         )
 
-    def create(self, validated_data):
-        return Complaint.objects.create(filer = self.request.user, **validated_data)
+    # def create(self, validated_data):
+    #     return Complaint.objects.create(filer = self.request.user, **validated_data)
 
 
 
@@ -42,7 +44,6 @@ class NotificationSerializer(serializers.ModelSerializer):
         model = Notification
         fields = (
             'notification',
-            'user',
         )
 
 class ProfileSerializer(serializers.ModelSerializer):

@@ -13,9 +13,14 @@ class ComCreateView(generics.CreateAPIView):
     serializer_class = ComplaintSerializer
 
     def perform_create(self, serializer):
+        print("I was here")
         serializer.save(filer=self.request.user)
 
 class TrialCreateView(generics.CreateAPIView):
+
+    def perform_create(self, serializer):
+        print("I was here")
+        serializer.save(filer=self.request.user)
     
     permission_classes = (IsAuthenticated,)
     # authentication_classes = (authentication.TokenAuthentication,)
@@ -39,7 +44,7 @@ class ComVerifiedView(generics.ListAPIView):
     serializer_class = ComplaintSerializer
 
     def get_queryset(self, *args, **kwargs):
-        return Complaint.objects.all().filter(filer = self.request.user, is_verified = False, is_settled = False)
+        return Complaint.objects.all().filter(filer = self.request.user, is_verified = True, is_settled = False)
 
 class ComSettledView(generics.ListAPIView):
     
