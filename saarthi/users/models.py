@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-
+from mun_dashboard.models import Complaint
 
 class User(AbstractUser):
     is_official = models.BooleanField(default=False)
@@ -16,4 +16,4 @@ class Profile(models.Model):
 
 class Notification(models.Model):
     notification = models.TextField()
-    user = models.ForeignKey(User, on_delete = models.CASCADE)
+    complaint = models.ForeignKey(Complaint, on_delete = models.CASCADE)
